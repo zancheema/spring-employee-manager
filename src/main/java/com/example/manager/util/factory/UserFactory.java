@@ -1,7 +1,5 @@
 package com.example.manager.util.factory;
 
-import static org.springframework.util.StringUtils.hasText;
-
 import com.example.manager.model.User;
 
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -14,6 +12,6 @@ public class UserFactory {
     }
 
     public User create() {
-        return new User(oAuth2User.getAttribute("name"), oAuth2User.getAttribute("email"));
+        return new User(oAuth2User.getAttribute("email"), oAuth2User.getAttribute("name"));
     }
 }

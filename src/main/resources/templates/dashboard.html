@@ -10,6 +10,17 @@
 
 <body>
     <h2>Hello, <span th:text="${user.name}">USERNAME</span>!</h2>
+
+    <div th:switch="${employees.size}">
+        <div th:case="0">
+            <p>You don't have any employees yet.</p>
+        </div>
+        <div th:case="*">
+            <ul th:each="employee in ${employees}">
+                <li th:text="${employee.email}">EMPLOYEE</li>
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,14 +1,31 @@
 package com.example.manager.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name = "users")
 public class User {
-    private String name;
+    @Id
+    @Column(nullable = false, unique = true)
     private String email;
 
-    public User() {}
+    private String name;
 
-    public User(String name, String email) {
-        this.setName(name);
-        this.setEmail(email);
+    public User() {
+    }
+
+    public User(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -19,11 +36,8 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public String toString() {
+        return "User [email=" + email + ", name=" + name + "]";
     }
 }

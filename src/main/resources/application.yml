@@ -1,4 +1,6 @@
+# Spring Boot config
 spring:
+  # Oauth2 config
   security:
     oauth2:
       client:
@@ -6,3 +8,15 @@ spring:
           google:
             client-id: 238128617745-jq7i2hm18mmrm0l3oviut695nh92enf8.apps.googleusercontent.com
             client-secret: DeeapYdNVf5eas3dKjuoravv
+  # Data JPA config
+  jpa:
+    # show-sql: true
+    hibernate:
+      ddl-auto: update
+  # Database (MySQL) config
+  datasource:
+    url: jdbc:mysql://localhost:3306/employee_manager
+    username: springuser
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+
