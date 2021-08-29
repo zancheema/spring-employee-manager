@@ -12,7 +12,10 @@
 <body>
     <nav class="nav-bar">
         <h3>Employee Manager</h3>
-        <button onclick="toggleAddEmployeeFormVisibility()">Add +</button>
+        <div>
+            <button onclick="toggleAddEmployeeFormVisibility()">Add +</button>
+            <form action="/logout"><button type="submit">Logout</button></form>
+        </div>
     </nav>
 
     <h2>Hello, <span th:text="${user.name}">USERNAME</span>!</h2>
