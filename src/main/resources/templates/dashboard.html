@@ -6,21 +6,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
 </head>
 
 <body>
+    <nav class="nav-bar">
+        <h3>Employee Manager</h3>
+        <button onclick="toggleAddEmployeeFormVisibility()">Add +</button>
+    </nav>
+
     <h2>Hello, <span th:text="${user.name}">USERNAME</span>!</h2>
 
     <div th:switch="${employees.size}">
-        <div th:case="0">
+        <div class="employee-list-container" th:case="0">
             <p>You don't have any employees yet.</p>
         </div>
-        <div th:case="*">
-            <ul th:each="employee in ${employees}">
-                <li th:text="${employee.email}">EMPLOYEE</li>
+        <div class="employee-list-container" th:case="*">
+            <ul class="employee-list" th:each="employee : ${employees}">
+                <li class="card">
+                    <div class="container">
+                        <h4>Email: <span th:text="${employee.email}">EMAIL</span></h4>
+                        <p>Employee Name: <span th:text="${employee.name}">NAME</span></p>
+                        <p>Job Title: <span th:text="${employee.jobTitle}">JOBTITLE</span></p>
+                        <p>Phone #: <span th:text="${employee.phone}">PHONE</span></p>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
+
+    <div class="dialog-box card" id="add-employee-form-dialog">
+        <div class="container">
+            <form action="/employee/add" method="post">
+                <div>
+                    <input type="email" class="form-input" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <input type="text" class="form-input" name="jobTitle" id="job-title" placeholder="Job Title"
+                        required>
+                </div>
+                <div>
+                    <input type="text" class="form-input" name="name" id="name" placeholder="Full Name" required>
+                </div>
+                <div>
+                    <input type="text" class="form-input" name="phone" id="phone" placeholder="Phone #" required>
+                </div>
+
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <script th:src="@{/js/dashboard.js}"></script>
+    </footer>
 </body>
 
 </html>
